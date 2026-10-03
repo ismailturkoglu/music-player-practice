@@ -6,6 +6,6 @@ class Music {
     this.audio = audio;
   }
   getName() {
-    return this.title + this.singer;
+    return this.title + " - " + this.singer;
   }
 }
