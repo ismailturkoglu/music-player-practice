@@ -1,0 +1,55 @@
+body {
+  user-select: none;
+}
+
+#music-app {
+  width: 20rem;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -20rem);
+}
+
+.card img {
+  width: 100%;
+  max-height: 11rem;
+  object-fit: cover;
+  object-position: center;
+  -webkit-user-drag: none;
+}
+
+/* card-body */
+
+/* song-details */
+.title {
+  font-family: "Risque", Arial, sans-serif;
+  color: darkmagenta;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+.singer {
+  font-family: "Open Sans", Helvetica, sans-serif;
+  color: black;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+/* song-progress */
+
+/* controls */
+
+/* card-footer */
+.footer-buttons button {
+  background-color: rebeccapurple;
+}
+/* card-footer */
+
+/* song-list */
+.song-list {
+  max-height: 8rem;
+  overflow-y: auto;
+}
+
+.song-list ul li {
+  list-style: none;
+  margin: 0.3rem 0;
+}

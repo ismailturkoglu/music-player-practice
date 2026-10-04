@@ -26,9 +26,95 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <!-- style.css -->
+    <link rel="stylesheet" href="style.css" />
     <title>Music-Player-Practice</title>
   </head>
   <body>
+    <div class="container">
+      <div id="music-app">
+        <div class="card border-black border-1 shadow p-1 bg-warning">
+          <img class="card-img-top" src="img/1.jpeg" alt="" />
+          <div class="card-body bg-light">
+            <div class="song-details text-center">
+              <div class="title my-3">Yakar Geçerim - Ajda Pekkan</div>
+              <div class="singer my-3">Ajda Pekkan</div>
+            </div>
+            <div class="song-progress">
+              <div class="progress-bar my-2">
+                <input type="range" value="0" />
+              </div>
+              <div class="progress-details">
+                <div class="d-flex justify-content-between align-items-center">
+                  <span>0:00</span>
+                  <span>3:11</span>
+                </div>
+              </div>
+            </div>
+            <div class="controls my-3">
+              <div class="d-flex justify-content-evenly align-items-center">
+                <button class="btn btn-sm rounded-circle btn-primary">
+                  <i class="fa-solid fa-backward"></i>
+                </button>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-lg rounded-pill btn-primary">
+                    <i class="fa-solid fa-play"></i>
+                  </button>
+                  <button class="btn btn-lg rounded-pill btn-primary">
+                    <i class="fa-solid fa-stop"></i>
+                  </button>
+                </div>
+                <button class="btn btn-sm rounded-circle btn-primary">
+                  <i class="fa-solid fa-forward"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer bg-warning py-3">
+            <div
+              class="footer-buttons d-flex justify-content-between align-items-center"
+            >
+              <button
+                class="btn btn-primary btn-sm"
+                data-bs-toggle="collapse"
+                data-bs-target="#song-list"
+                title="Song List"
+              >
+                <i class="fa-solid fa-list"></i>
+              </button>
+              <div class="d-flex w-50 justify-content-end gap-2">
+                <button
+                  class="btn btn-primary btn-sm rounded-circle"
+                  title="Repeat"
+                >
+                  <i class="fa-solid fa-repeat"></i>
+                </button>
+                <button
+                  class="btn btn-primary btn-sm rounded-circle"
+                  title="Volume"
+                >
+                  <i class="fa-solid fa-volume"></i>
+                </button>
+                <input class="w-50" type="range" value="100" />
+              </div>
+            </div>
+          </div>
+          <div
+            id="song-list"
+            class="card-footer song-list bg-light text-dark collapse show"
+          >
+            <ul>
+              <li>Yakar Geçerim - Ajda Pekkan</li>
+              <li>Deli Kız - Buray</li>
+              <li>Unuttun Mu Beni - Sezen Aksu</li>
+              <li>Yolla - Tarkan</li>
+              <li>Uslanmıyor Bu - Zeynep Bastık</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Scripts -->
     <!-- Bootsrap Bundle -->
     <script
