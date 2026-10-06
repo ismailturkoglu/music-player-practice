@@ -2,10 +2,7 @@ body {
   user-select: none;
 }
 
-.song-list button {
-  transition: all 0.4s ease-in-out !important;
-}
-
+/* #music-app */
 #music-app {
   width: 20rem;
   position: absolute;
@@ -14,16 +11,17 @@ body {
   transform: translate(-50%, -20rem);
 }
 
+/* .card */
 .card img {
-  width: 100%;
-  max-height: 11rem;
+  width: auto;
+  height: 100%;
+  max-height: 12rem;
   object-fit: cover;
   object-position: center;
   -webkit-user-drag: none;
 }
 
-/* card-body */
-
+/* .card-body */
 /* song-details */
 .title {
   font-family: "Risque", Arial, sans-serif;
@@ -37,15 +35,78 @@ body {
   font-weight: 700;
   font-size: 0.8rem;
 }
+
 /* song-progress */
 
 /* controls */
+.controls #pause-icon {
+  display: none;
+}
+
+.controls.playing #pause-icon {
+  display: inline-block;
+}
+
+.controls.playing #play-icon {
+  display: none;
+}
 
 /* card-footer */
+/* .footer-buttons */
 .footer-buttons button {
   background-color: rgb(0, 206, 209);
 }
 .footer-buttons button:hover {
   background-color: rgba(0, 206, 209, 0.7);
   color: #fff;
+}
+.footer-buttons button {
+  transition: all 0.4s ease-in-out !important;
+}
+
+#repeat-btn {
+  position: relative;
+}
+
+#repeat-btn.repeat i,
+#repeat-btn.repeat-all i {
+  color: rgb(138, 43, 226);
+}
+
+#repeat-btn .repeat-icons {
+  display: none;
+}
+
+#repeat-btn.repeat .repeat-icons {
+  display: inline-block;
+  position: absolute;
+  top: -22%;
+  left: 32%;
+  font-size: 1rem;
+}
+#repeat-btn.repeat .repeat-icons span,
+#repeat-btn.repeat-all .repeat-icons span {
+  color: rgb(138, 43, 226);
+}
+
+.volume-on #volumeOff {
+  display: none;
+}
+.volume-off #volumeOn {
+  display: none;
+}
+.volume-on #volumeOn {
+  display: inline-block;
+}
+.volume-off #volumeOff {
+  display: inline-block;
+  color: rgb(138, 43, 226);
+}
+/* #song-list */
+
+#song-list-btn {
+  color: rgb(138, 43, 226);
+}
+#song-list-btn.collapsed {
+  color: black;
 }
