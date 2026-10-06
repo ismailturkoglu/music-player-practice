@@ -77,11 +77,13 @@ ui.volume.addEventListener("click", () => {
   if (ui.volume.className.includes("volume-on")) {
     ui.volume.classList.remove("volume-on");
     ui.volume.classList.add("volume-off");
+    ui.volume.title = "Volume-On";
     ui.volumeBar.value = 0;
     ui.audio.volume = 0;
   } else {
     ui.volume.classList.add("volume-on");
     ui.volume.classList.remove("volume-off");
+    ui.volume.title = "Volume-Off";
     ui.volumeBar.value = 75;
     ui.audio.volume = 0.75;
   }
@@ -93,15 +95,18 @@ ui.repeat.addEventListener("click", () => {
     case 0:
       ui.repeat.classList.add("repeat");
       ui.repeat.setAttribute("play-mode", "repeat");
+      ui.repeat.title = "Repeat-All";
       break;
     case 1:
       ui.repeat.classList.remove("repeat");
       ui.repeat.classList.add("repeat-all");
       ui.repeat.setAttribute("play-mode", "repeat-all");
+      ui.repeat.title = "Repeat-Off";
       break;
     case 2:
       ui.repeat.classList.remove("repeat-all");
       ui.repeat.setAttribute("play-mode", "next");
+      ui.repeat.title = "Repeat-On";
       break;
   }
   clickNo++;
