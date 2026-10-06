@@ -71,7 +71,15 @@ ui.stop.addEventListener("click", () => {
 
 /* .card-footer */
 ui.volumeBar.addEventListener("input", () => {
-  ui.audio.volume = ui.volumeBar.value / 100;
+  if (ui.volumeBar.value == 0) {
+    ui.volume.classList.add("volume-off");
+    ui.volume.classList.remove("volume-on");
+    ui.audio.volume = 0;
+  } else {
+    ui.audio.volume = ui.volumeBar.value / 100;
+    ui.volume.classList.add("volume-on");
+    ui.volume.classList.remove("volume-off");
+  }
 });
 ui.volume.addEventListener("click", () => {
   if (ui.volume.className.includes("volume-on")) {
