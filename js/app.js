@@ -6,6 +6,7 @@ window.addEventListener("load", () => {
   let music = player.getMusic();
   /* .song-details */
   displayMusic(music);
+  displayList(musicList);
 });
 
 /* .song-progress */
@@ -13,12 +14,12 @@ window.addEventListener("load", () => {
 ui.audio.addEventListener("loadedmetadata", () => {
   ui.duration.innerText = formatTime(ui.audio.duration);
   ui.currentTime.innerText = formatTime(ui.audio.currentTime);
-  ui.progresBar.max = ui.audio.duration;
+  ui.progressBar.max = ui.audio.duration;
   ui.audio.volume = ui.volumeBar.value / 100;
 });
 
 ui.audio.addEventListener("timeupdate", () => {
-  ui.progresBar.value = ui.audio.currentTime;
+  ui.progressBar.value = ui.audio.currentTime;
   ui.currentTime.innerText = formatTime(ui.audio.currentTime);
 });
 
@@ -42,9 +43,9 @@ ui.audio.addEventListener("ended", () => {
   }
 });
 
-ui.progresBar.addEventListener("input", () => {
+ui.progressBar.addEventListener("input", () => {
   if (isPlaying()) {
-    ui.audio.currentTime = ui.progresBar.value;
+    ui.audio.currentTime = ui.progressBar.value;
   }
 });
 
@@ -82,7 +83,7 @@ ui.volumeBar.addEventListener("input", () => {
   }
 });
 ui.volume.addEventListener("click", () => {
-  if (ui.volume.className.includes("volume-on")) {
+  if (ui.volume.classList.contains("volume-on")) {
     ui.volume.classList.remove("volume-on");
     ui.volume.classList.add("volume-off");
     ui.volume.title = "Volume-On";
@@ -92,8 +93,8 @@ ui.volume.addEventListener("click", () => {
     ui.volume.classList.add("volume-on");
     ui.volume.classList.remove("volume-off");
     ui.volume.title = "Volume-Off";
-    ui.volumeBar.value = 75;
-    ui.audio.volume = 0.75;
+    ui.volumeBar.value = 20;
+    ui.audio.volume = 0.2;
   }
 });
 ui.repeat.addEventListener("click", () => {
@@ -121,7 +122,7 @@ ui.repeat.addEventListener("click", () => {
   ui.repeat.setAttribute("click-no", clickNo);
 });
 
-/* #song-list */
+/* #song-list-div */
 
 /* Fonctions */
 const displayMusic = (music) => {
@@ -141,6 +142,7 @@ const formatTime = (second) => {
 const stopMusic = () => {
   ui.audio.pause();
   ui.controls.classList.remove("playing");
+  ui.playPause.title = "Play";
   ui.audio.currentTime = 0;
 };
 
@@ -151,6 +153,8 @@ const pauseMusic = () => {
 };
 
 const playMusic = () => {
+  clearActiveItems();
+  makeActiveItem(player.index);
   ui.audio.play();
   ui.controls.classList.add("playing");
   ui.controls.querySelector("#play-pause").title = "Pause";
@@ -178,7 +182,45 @@ const nextMusic = () => {
   playMusic();
 };
 
-const isPlaying = () => {
-  const isPlaying = ui.controls.className.includes("playing");
-  return isPlaying;
+const isPlaying = () => ui.controls.classList.contains("playing");
+
+const displayList = (list) => {
+  for (let i = 0; i < list.length; i++) {
+    let liTag = `<li index="${i}" class="list-group-item d-flex justify-content-between align-items-center">
+    <span>${list[i].getName()}</span>
+    <span id="span-${i + 1}" class="badge text-dark rounded-pill"></span>
+    <audio id="audio-${i + 1}" src="mp3/${i + 1}.mp3"></audio>
+  </li>`;
+    ui.songList.insertAdjacentHTML("beforeend", liTag);
+
+    let durationSpan = document.getElementById(`span-${i + 1}`);
+    let audio = document.getElementById(`audio-${i + 1}`);
+
+    audio.addEventListener("loadedmetadata", () => {
+      durationSpan.innerText = formatTime(audio.duration);
+    });
+
+    ui.songList.children[i].addEventListener("click", selectMusic);
+  }
+  let index = player.index;
+  makeActiveItem(index);
+};
+
+const selectMusic = (e) => {
+  let index = e.currentTarget.getAttribute("index");
+  player.index = Number(index);
+  clearActiveItems();
+  makeActiveItem(player.index);
+  displayMusic(player.getMusic());
+  playMusic();
+};
+
+const makeActiveItem = (index) => {
+  ui.songList.children[index].classList.add("active");
+};
+
+const clearActiveItems = () => {
+  for (let i = 0; i < player.list.length; i++) {
+    ui.songList.children[i].classList.remove("active");
+  }
 };

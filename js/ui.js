@@ -6,7 +6,7 @@ class UI {
     this.audio = document.querySelector(".song-progress audio");
     this.currentTime = document.querySelector(".current-time");
     this.duration = document.querySelector(".duration");
-    this.progresBar = document.querySelector("#progress-bar");
+    this.progressBar = document.querySelector("#progress-bar");
     this.controls = document.querySelector(".controls");
     this.previous = document.querySelector("#previous");
     this.playPause = document.querySelector("#play-pause");
@@ -15,5 +15,6 @@ class UI {
     this.volume = document.querySelector(".volume");
     this.volumeBar = document.querySelector("#volume-bar");
     this.repeat = document.querySelector("#repeat-btn");
+    this.songList = document.querySelector(".song-list");
   }
 }
