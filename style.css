@@ -1,3 +1,14 @@
+@media (max-width: 768px) {
+  body {
+    font-size: 0.8rem;
+  }
+  #music-app .card img {
+    height: 10rem;
+    object-fit: contain;
+    background-color: black;
+  }
+}
+
 body {
   user-select: none;
 }
