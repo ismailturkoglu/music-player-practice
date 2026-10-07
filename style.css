@@ -57,6 +57,10 @@ body {
 .card-footer {
   padding-top: 1rem;
 }
+
+#volume-bar {
+  width: 5rem;
+}
 /* .footer-buttons */
 .footer-buttons button {
   background-color: rgb(0, 206, 209);
@@ -146,5 +150,8 @@ body {
   /* .card-footer */
   .card-footer {
     padding-top: 0.5rem;
+  }
+  #volume-bar {
+    width: 4rem;
   }
 }
